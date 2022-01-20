@@ -18,6 +18,9 @@ Post.init(
     title: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
     },
     user_id: {
       type: DataTypes.INTEGER,

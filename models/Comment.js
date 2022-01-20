@@ -18,6 +18,10 @@ Comment.init(
     content: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        // Will only allow a comment with at least 4 characters
+        len: [4],
+      },
     },
     user_id: {
       type: DataTypes.INTEGER,
