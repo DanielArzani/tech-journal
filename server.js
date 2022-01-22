@@ -4,10 +4,16 @@ const path = require("path");
 const sequelize = require("./config/connection");
 // Will automatically search for index.js
 const routes = require("./controllers");
+const { create } = require("express-handlebars");
 
 // Variables
 const app = express();
+const hbs = create();
 const PORT = process.env.PORT || 3000;
+
+// Register hbs to work with express and set view engine to look for handlebars
+app.engine("handlebars", hbs.engine);
+app.set("view engine", "handlebars");
 
 // Middleware
 app.use(express.json());

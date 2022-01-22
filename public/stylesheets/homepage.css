@@ -1,0 +1,47 @@
+/*
+FONT SIZE SYSTEM (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+*/
+
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* General Styles */
+html {
+  font-size: 62.5%;
+}
+
+/****************************/
+/* HEADER SECTION */
+/****************************/
+
+/* Layout for header section */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+
+  background-color: lightgray;
+  min-height: 10rem;
+}
+
+.logo {
+  font-size: 2.4rem;
+}
+
+.navbar {
+  display: flex;
+  gap: 1rem;
+
+  font-size: 2rem;
+}
+
+.nav-links {
+  color: black;
+  text-decoration: none;
+}
