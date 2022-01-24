@@ -1,10 +1,11 @@
 const router = require("express").Router();
 const { User, Post, Comment } = require("../../models");
+const bcrypt = require("bcrypt");
 
 // Get all users
 router.get("/", (req, res) => {
   User.findAll({
-    // Un-comment in order to see users passwords
+    // Comment-out in order to see users passwords
     // attributes: { exclude: ["password"] },
   })
     .then((dbUserData) => {
@@ -33,7 +34,7 @@ router.get("/:id", (req, res) => {
     include: [
       {
         model: Post,
-        attributes: ["id", "title", "created_at"],
+        attributes: ["id", "title", "content_body", "created_at"],
       },
       {
         model: Comment,
@@ -81,11 +82,18 @@ router.post("/", (req, res) => {
     email: req.body.email,
   })
     .then((dbUserData) => {
-      res.status(201).json({
-        status: "success",
-        data: {
-          user: dbUserData,
-        },
+      // Save credentials
+      req.session.save(() => {
+        req.session.user_id = dbUserData.id;
+        req.session.username = dbUserData.username;
+        req.session.loggedIn = true;
+
+        res.status(201).json({
+          status: "success",
+          data: {
+            user: dbUserData,
+          },
+        });
       });
     })
     .catch((err) => {
@@ -98,18 +106,72 @@ router.post("/", (req, res) => {
     });
 });
 
+// Login
+router.post("/login", (req, res) => {
+  User.findOne({
+    where: { email: req.body.email },
+  })
+    .then((dbUserData) => {
+      if (!dbUserData) {
+        res.status(404).json({
+          status: "fail",
+          data: {
+            email: "No user found with that email",
+          },
+        });
+        return;
+      }
+
+      const validPassword = dbUserData.checkPassword(req.body.password);
+      if (!validPassword) {
+        res.status(400).json({
+          status: "fail",
+          data: {
+            password: "Incorrect password!",
+          },
+        });
+        return;
+      }
+      req.session.save(() => {
+        req.session.user_id = dbUserData.id;
+        req.session.username = dbUserData.username;
+        req.session.loggedIn = true;
+
+        res.status(200).json({
+          status: "success",
+          data: {
+            user: dbUserData,
+            message: "You are now logged in",
+          },
+        });
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        status: "error",
+        message: err,
+      });
+    });
+});
+
+// Logout
+router.post("/logout", (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+});
+
 // Update User
 router.put("/:id", (req, res) => {
-  User.update(
-    {
-      username: req.body.username,
-      password: req.body.password,
-      email: req.body.email,
-    },
-    {
-      where: { id: req.params.id },
-    }
-  )
+  User.update(req.body, {
+    // For hashing updated password
+    individualHooks: true,
+    where: { id: req.params.id },
+  })
     .then((dbUserData) => {
       // (!dbUserData) will still return successful even if the ID doesn't exist, since dbUserdata will either return [0] or [1], this method can be used to check
       if (dbUserData.includes(0)) {

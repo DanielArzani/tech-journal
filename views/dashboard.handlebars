@@ -1,0 +1,42 @@
+{{! If logged in, display these things }}
+{{#if state.loggedIn}}
+  <h1>Welcome User!</h1>
+  <a href="/">Homepage</a>
+  <button id="logout">Logout</button>
+
+  {{! Create a post }}
+  <h2>Create a post</h2>
+  <form class="create-post-form">
+    <label for="post-title"></label>
+    <input
+      required
+      type="text"
+      id="post-title"
+      placeholder="Title for this post"
+    />
+    <textarea
+      required
+      name=""
+      id="create-post-textarea"
+      cols="30"
+      rows="10"
+    ></textarea>
+    <button class="create-post-btn" type="submit">Create Post</button>
+  </form>
+{{/if}}
+
+<section class="user-posts-section">
+  {{#each posts}}
+    <div class="post">
+      <span class="post-title">{{title}}</span>
+      <span class="post-created_by">{{user.username}}</span>
+      <span class="post-created_on">(Created on: {{created_at}})</span>
+      <p class="post-body">{{content_body}}</p>
+    </div>
+  {{/each}}
+</section>
+
+{{#if state.loggedIn}}
+  <script src="/javascript/logout.js"></script>
+  <script src="/javascript/create-post.js"></script>
+{{/if}}

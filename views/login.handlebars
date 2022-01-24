@@ -1,11 +1,16 @@
 <a href="/">Homepage</a>
-<form class="signup-form">
+<form class="login-form">
   {{! Username }}
-  <label for="signup-input">Username:</label>
-  <input type="text" id="signup-input" value="DevTest" />
+  <label for="login-username-input">Username:</label>
+  <input type="text" id="login-username-input" value="DevTest" />
   {{! Password }}
-  <label for="password-input">Password:</label>
-  <input type="password" id="password-input" value="password" />
+  <label for="login-password-input">Password:</label>
+  <input type="password" id="login-password-input" value="password" />
+  {{! Email }}
+  <label for="login-email-input">Email:</label>
+  <input type="text" id="login-email-input" value="Dev@gmail.com" />
   {{! Signup Button }}
   <button type="submit">Submit</button>
 </form>
+
+<script src="/javascript/login.js"></script>

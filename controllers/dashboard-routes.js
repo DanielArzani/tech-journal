@@ -1,10 +1,11 @@
 const router = require("express").Router();
 const { User, Post, Comment } = require("../models");
 
-// Get homepage
+// Get dashboard
 router.get("/", async (req, res) => {
   // Get all posts
   const response = await Post.findAll({
+    where: { user_id: req.session.user_id },
     attributes: ["id", "title", "content_body", "user_id", "created_at"],
     include: [
       {
@@ -24,20 +25,13 @@ router.get("/", async (req, res) => {
 
   // Loop through and serialize
   const posts = response.map((post) => post.get({ plain: true }));
+  console.log(posts);
 
   // Render
   const state = req.session;
-  res.render("homepage", { tabTitle: "Homepage", state, posts });
+  res.render("dashboard", { tabTitle: "Dashboard", state, posts });
 });
 
-// Get signup page
-router.get("/signup", (req, res) => {
-  res.render("signup", { tabTitle: "Signup" });
-});
-
-// Get login page
-router.get("/login", (req, res) => {
-  res.render("login", { tabTitle: "Login" });
-});
+// Create post
 
 module.exports = router;

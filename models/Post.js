@@ -22,8 +22,17 @@ Post.init(
         notEmpty: true,
       },
     },
+    content_body: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+        len: [4],
+      },
+    },
     user_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: "user",
         key: "id",

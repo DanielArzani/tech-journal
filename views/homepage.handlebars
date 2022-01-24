@@ -4,13 +4,31 @@
   {{! Navbar }}
   <nav class="navigation">
     <ul class="navbar">
-      {{! If loggedIn === false }}
-      <a href="/signup" class="nav-links">Sign up</a>
-      <a href="/login" class="nav-links">Login</a>
-      {{! Else }}
-      <a href="/" class="nav-links">Homepage</a>
-      <a href="#" class="nav-links">Dashboard</a>
-      <a href="/" class="nav-links">Logout</a>
+      {{! If loggedIn === false, only display signup and login links }}
+      {{#unless state.loggedIn}}
+        <a href="/signup" class="nav-links">Sign up</a>
+        <a href="/login" class="nav-links">Login</a>
+        {{! else display homepage and dashboard links along with logout button }}
+      {{else}}
+        <a href="/" class="nav-links">Homepage</a>
+        <a href="/dashboard" class="nav-links">Dashboard</a>
+        <button id="logout" class="nav-links">Logout</button>
+      {{/unless}}
     </ul>
   </nav>
 </header>
+
+<section class="all-posts-section">
+  {{#each posts}}
+    <div class="post">
+      <span class="post-title">{{title}}</span>
+      <span class="post-created_by">{{user.username}}</span>
+      <span class="post-created_on">(Created on: {{created_at}})</span>
+      <p class="post-body">{{content_body}}</p>
+    </div>
+  {{/each}}
+</section>
+
+{{#if state.loggedIn}}
+  <script src="/javascript/logout.js"></script>
+{{/if}}

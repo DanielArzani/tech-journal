@@ -10,7 +10,7 @@ class User extends Model {
   // Instance method for verifying password when user logs
   // (Initial password, hashed password)
   checkPassword(loginPw) {
-    return bcrypt.compare(loginPw, this.password);
+    return bcrypt.compareSync(loginPw, this.password);
   }
 }
 

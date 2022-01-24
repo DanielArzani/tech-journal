@@ -45,3 +45,34 @@ html {
   color: black;
   text-decoration: none;
 }
+
+/****************************/
+/* POSTS SECTION */
+/****************************/
+
+/* Background colour for each post */
+.post:nth-child(even) {
+  background-color: bisque;
+}
+
+.post:nth-child(odd) {
+  background-color: aquamarine;
+}
+
+/* Size and style for the title and content of each post */
+.post-title {
+  font-size: 3rem;
+}
+
+.post-body {
+  font-size: 2rem;
+}
+
+/* These should be moved to dashboard.handlebars */
+.post-created_by {
+  font-size: 1.6rem;
+}
+
+.post-created_on {
+  font-size: 1.4rem;
+}
