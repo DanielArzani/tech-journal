@@ -1,0 +1,17 @@
+{{#if state.loggedIn}}
+  <section class="comment-section">
+    <form class="add-comment-form">
+      <label for="comment-input">Add Comment</label>
+      <textarea
+        name="comment-input"
+        id="comment-input"
+        cols="30"
+        rows="10"
+      ></textarea>
+      <button class="btn-add-comment" type="submit">Submit</button>
+    </form>
+    {{/if}}
+    {{#each post.comments}}
+      <p>{{content}} by {{user.username}}</p>
+    {{/each}}
+  </section>

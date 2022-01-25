@@ -58,10 +58,11 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
   Comment.create({
     content: req.body.content,
-    user_id: req.body.user_id,
+    user_id: req.session.user_id,
     post_id: req.body.post_id,
   })
     .then((dbCommentData) => {
+      console.log(dbCommentData);
       res.status(201).json({
         status: "success",
         data: {
@@ -84,7 +85,7 @@ router.put("/:id", (req, res) => {
   Comment.update(
     {
       content: req.body.content,
-      user_id: req.body.user_id,
+      user_id: req.session.user_id,
       post_id: req.body.post_id,
     },
     {

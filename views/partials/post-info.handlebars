@@ -1,0 +1,10 @@
+{{#each posts}}
+  <a href="/posts/{{id}}">
+    <div class="post">
+      <span class="post-title">{{title}}</span>
+      <span class="post-created_by">{{user.username}}</span>
+      <span class="post-created_on">(Created on: {{created_at}})</span>
+      <p class="post-body">{{content_body}}</p>
+    </div>
+  </a>
+{{/each}}

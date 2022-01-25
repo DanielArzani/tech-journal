@@ -30,6 +30,33 @@ router.get("/", async (req, res) => {
   res.render("homepage", { tabTitle: "Homepage", state, posts });
 });
 
+// Get single post page
+router.get("/posts/:id", async (req, res) => {
+  const response = await Post.findOne({
+    where: { id: req.params.id },
+    attributes: ["id", "title", "content_body", "user_id", "created_at"],
+    include: [
+      {
+        model: User,
+        attributes: ["username"],
+      },
+      {
+        model: Comment,
+        attributes: ["id", "content", "post_id", "user_id", "created_at"],
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
+    ],
+  });
+
+  const state = req.session;
+  const post = response.get({ plain: true });
+
+  res.render("view-post", { state, post });
+});
+
 // Get signup page
 router.get("/signup", (req, res) => {
   res.render("signup", { tabTitle: "Signup" });

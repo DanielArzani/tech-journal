@@ -25,13 +25,37 @@ router.get("/", async (req, res) => {
 
   // Loop through and serialize
   const posts = response.map((post) => post.get({ plain: true }));
-  console.log(posts);
 
   // Render
   const state = req.session;
   res.render("dashboard", { tabTitle: "Dashboard", state, posts });
 });
 
-// Create post
+// Edit posts
+router.get("/edit/:id", async (req, res) => {
+  const response = await Post.findOne({
+    where: { id: req.params.id },
+    attributes: ["id", "title", "content_body", "user_id", "created_at"],
+    include: [
+      {
+        model: User,
+        attributes: ["username"],
+      },
+      {
+        model: Comment,
+        attributes: ["id", "content", "post_id", "user_id", "created_at"],
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
+    ],
+  });
+
+  const post = response.get({ plain: true });
+  // Render
+  const state = req.session;
+  res.render("edit-post", { tabTitle: "Post", state, post });
+});
 
 module.exports = router;

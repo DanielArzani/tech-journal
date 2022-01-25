@@ -115,7 +115,8 @@ router.put("/:id", (req, res) => {
   Post.update(
     {
       title: req.body.title,
-      user_id: req.body.user_id,
+      content_body: req.body.content_body,
+      user_id: req.session.user_id,
     },
     {
       where: { id: req.params.id },
@@ -131,6 +132,7 @@ router.put("/:id", (req, res) => {
         });
         return;
       }
+
       res.status(200).json({
         status: "success",
         data: {

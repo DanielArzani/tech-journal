@@ -1,0 +1,23 @@
+<a href="/">Homepage</a>
+{{#if state.loggedIn}}
+  <h2>Edit a post</h2>
+  <form class="edit-post-form">
+    <label for="post-title"></label>
+    <input required type="text" id="post-title" placeholder="{{post.title}}" />
+    <textarea
+      required
+      name=""
+      id="edit-post-textarea"
+      cols="30"
+      rows="10"
+    ></textarea>
+    <button class="edit-post-btn" type="submit">Edit Post</button>
+    <button class="delete-post-btn" type="submit">Delete Post</button>
+  </form>
+{{/if}}
+
+{{> comment}}
+
+<script src="/javascript/edit-post.js"></script>
+<script src="/javascript/delete-post.js"></script>
+<script src="/javascript/comment.js"></script>
