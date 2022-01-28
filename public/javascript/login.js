@@ -1,5 +1,5 @@
 // Form input
-const loginForm = document.querySelector(".login-form");
+const loginForm = document.querySelector(".section-login--form");
 
 // Send credentials to server
 const login = async function (e) {
@@ -7,18 +7,17 @@ const login = async function (e) {
 
   // login Username
   const loginUsername = document
-    .querySelector("#login-username-input")
+    .querySelector("#section-login--username")
     .value.trim();
   // login Password
   const loginPassword = document
-    .querySelector("#login-password-input")
+    .querySelector("#section-login--password")
     .value.trim();
   // login Email
-  const loginEmail = document.querySelector("#login-email-input").value.trim();
+  const loginEmail = document
+    .querySelector("#section-login--email")
+    .value.trim();
 
-  console.log(loginUsername);
-  console.log(loginPassword);
-  console.log(loginEmail);
   // Basic validation
   if ((loginUsername, loginPassword, loginEmail)) {
     // Post to server

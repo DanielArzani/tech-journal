@@ -1,7 +1,7 @@
-const formEditPost = document.querySelector(".edit-post-form");
-const postTitle = document.querySelector("#post-title");
-const postContent = document.querySelector("#edit-post-textarea");
-const editPostBtn = document.querySelector(".edit-post-btn");
+const formEditPost = document.querySelector(".section-edit_post--form");
+const postTitle = document.querySelector("#section-edit_post--title");
+const postContent = document.querySelector("#section-edit_post--content");
+const editPostBtn = document.querySelector(".edit-post--update-btn");
 
 const editPost = async function (e) {
   e.preventDefault();

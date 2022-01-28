@@ -28,7 +28,12 @@ router.get("/", async (req, res) => {
 
   // Render
   const state = req.session;
-  res.render("dashboard", { tabTitle: "Dashboard", state, posts });
+  res.render("dashboard", {
+    tabTitle: "Dashboard",
+    editOrNot: true,
+    state,
+    posts,
+  });
 });
 
 // Edit posts

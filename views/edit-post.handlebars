@@ -1,23 +1,28 @@
-<a href="/">Homepage</a>
 {{#if state.loggedIn}}
-  <h2>Edit a post</h2>
-  <form class="edit-post-form">
-    <label for="post-title"></label>
-    <input required type="text" id="post-title" placeholder="{{post.title}}" />
-    <textarea
-      required
-      name=""
-      id="edit-post-textarea"
-      cols="30"
-      rows="10"
-    ></textarea>
-    <button class="edit-post-btn" type="submit">Edit Post</button>
-    <button class="delete-post-btn" type="submit">Delete Post</button>
-  </form>
+<section class="section-edit_post">
+      <span class="section-edit_post--title">Edit Post</span>
+      <form class="section-edit_post--form">
+        <div>
+          <label for="section-edit_post--title">{{post.title}}</label>
+          <input type="text" id="section-edit_post--title" />
+        </div>
+        <div>
+          <label for="section-edit_post--content">Content</label>
+          <textarea
+            name="section-edit_post--content"
+            id="section-edit_post--content"
+            cols="12"
+            rows="5"
+          ></textarea>
+        </div>
+        <button class="edit-post--update-btn" type="submit">Edit Post</button>
+        <button class="edit-post--delete-btn" type="submit">Delete Post</button>
+      </form>
+    </section>
 {{/if}}
 
 {{> comment}}
-
 <script src="/javascript/edit-post.js"></script>
 <script src="/javascript/delete-post.js"></script>
 <script src="/javascript/comment.js"></script>
+<script src="/javascript/logout.js"></script>

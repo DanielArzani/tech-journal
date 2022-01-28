@@ -1,7 +1,7 @@
-const formCreatePost = document.querySelector(".create-post-form");
-const postTitle = document.querySelector("#post-title");
-const newPostContent = document.querySelector("#create-post-textarea");
-const createPostBtn = document.querySelector(".create-post-btn");
+const formCreatePost = document.querySelector(".section-create_post--form");
+const postTitle = document.querySelector("#section-create_post--title");
+const newPostContent = document.querySelector("#section-create_post--content");
+const createPostBtn = document.querySelector(".section-create_post--content");
 
 const createPost = async function (e) {
   e.preventDefault();

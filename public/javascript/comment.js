@@ -1,6 +1,6 @@
-const commentForm = document.querySelector(".add-comment-form");
-const commentText = document.querySelector("#comment-input");
-const commentButton = document.querySelector(".btn-add-comment");
+const commentForm = document.querySelector(".section-comment--form");
+const commentText = document.querySelector("#section-comment--content");
+const commentButton = document.querySelector(".section-comment--create-btn");
 
 const addComment = async function (e) {
   e.preventDefault();

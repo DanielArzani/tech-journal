@@ -54,17 +54,17 @@ router.get("/posts/:id", async (req, res) => {
   const state = req.session;
   const post = response.get({ plain: true });
 
-  res.render("view-post", { state, post });
+  res.render("view-post", { editOrNot: false, state, post });
 });
 
 // Get signup page
 router.get("/signup", (req, res) => {
-  res.render("signup", { tabTitle: "Signup" });
+  res.render("signup", { tabTitle: "Signup", layout: "account" });
 });
 
 // Get login page
 router.get("/login", (req, res) => {
-  res.render("login", { tabTitle: "Login" });
+  res.render("login", { tabTitle: "Login", layout: "account" });
 });
 
 module.exports = router;

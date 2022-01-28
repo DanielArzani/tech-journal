@@ -1,4 +1,4 @@
-const deleteBtn = document.querySelector(".delete-post-btn");
+const deleteBtn = document.querySelector(".edit-post--delete-btn");
 
 const deletePost = async function (e) {
   e.preventDefault();

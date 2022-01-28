@@ -1,5 +1,5 @@
 // Form input
-const signUpForm = document.querySelector(".signup-form");
+const signUpForm = document.querySelector(".section-signup--form");
 
 // Send credentials to server
 const createAccount = async function (e) {
@@ -7,15 +7,15 @@ const createAccount = async function (e) {
 
   // Signup Username
   const signUpUsername = document
-    .querySelector("#signup-username-input")
+    .querySelector("#section-signup--username")
     .value.trim();
   // Signup Password
   const signUpPassword = document
-    .querySelector("#signup-password-input")
+    .querySelector("#section-signup--password")
     .value.trim();
   // Signup Email
   const signUpEmail = document
-    .querySelector("#signup-email-input")
+    .querySelector("#section-signup--email")
     .value.trim();
 
   // Basic validation

@@ -1,0 +1,91 @@
+/*
+FONT SIZE SYSTEM (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+*/
+
+/*
+SPACING SYSTEM (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+*/
+
+/* Variables */
+:root {
+  /* Vars go here */
+}
+
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Root Font Size */
+html {
+  font-size: 62.5%;
+}
+
+/* General Styles */
+body {
+  /* Font Family Goes here */
+  /* To fix footer not staying at the bottom of the page when there aren't enough posts */
+  position: relative;
+  height: 100vh;
+}
+
+/* Base Style */
+
+/* Headers */
+h1 {
+  font-size: 5.2rem;
+}
+
+h3 {
+  font-size: 3.2rem;
+}
+
+/* Text */
+p,
+span {
+  font-size: 2.4rem;
+}
+
+/* Links */
+a {
+  color: initial;
+  font-size: 2.4rem;
+  text-decoration-line: none;
+}
+
+a:hover {
+  text-decoration-line: underline;
+}
+
+/* Form Input */
+input {
+  font-size: 1.8rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+/* Button */
+button {
+  border: 1px solid hsl(0, 0%, 85%);
+  border-radius: 0.5em;
+  font-size: 2rem;
+  padding: 0.5em 1em;
+  transition: all 250ms;
+}
+
+button:hover {
+  background-color: hsl(0, 0%, 80%);
+  box-shadow: 0 5px 10px hsla(0, 0%, 0%, 0.3);
+  cursor: pointer;
+  transform: translateY(-2px);
+}
+
+button:active {
+  background-color: hsl(0, 0%, 70%);
+  box-shadow: 0 5px 12px hsla(0, 0%, 0%, 0.1);
+  transform: translateY(2px);
+}

@@ -1,17 +1,28 @@
 {{#if state.loggedIn}}
-  <section class="comment-section">
-    <form class="add-comment-form">
-      <label for="comment-input">Add Comment</label>
-      <textarea
-        name="comment-input"
-        id="comment-input"
-        cols="30"
-        rows="10"
-      ></textarea>
-      <button class="btn-add-comment" type="submit">Submit</button>
+  <section class="section-comment">
+    <span class="section-comment--title">Want to say something? Leave a comment!</span>
+    <form class="section-comment--form">
+      <div>
+        <label for="section-comment--content">Comment</label>
+        <textarea
+          name="section-comment--content"
+          id="section-comment--content"
+          cols="12"
+          rows="5"
+        ></textarea>
+      </div>
+      <button class="section-comment--create-btn" type="submit">
+        Submit Comment
+      </button>
     </form>
-    {{/if}}
-    {{#each post.comments}}
-      <p>{{content}} by {{user.username}}</p>
-    {{/each}}
   </section>
+{{/if}}
+<section class="section-all_comments">
+  {{#each post.comments}}
+    <p class="section-all_comments--created_comment">
+      {{user.username}}
+      <br />
+      {{content}}
+    </p>
+  {{/each}}
+</section>

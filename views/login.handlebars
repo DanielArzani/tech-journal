@@ -1,16 +1,21 @@
-<a href="/">Homepage</a>
-<form class="login-form">
-  {{! Username }}
-  <label for="login-username-input">Username:</label>
-  <input type="text" id="login-username-input" value="DevTest" />
-  {{! Password }}
-  <label for="login-password-input">Password:</label>
-  <input type="password" id="login-password-input" value="password" />
-  {{! Email }}
-  <label for="login-email-input">Email:</label>
-  <input type="text" id="login-email-input" value="Dev@gmail.com" />
-  {{! Signup Button }}
-  <button type="submit">Submit</button>
-</form>
+<section class="section-login">
+  <span class="section-login--title">Login</span>
+  <form class="section-login--form">
+    <div>
+      <label for="section-login--username">Username</label>
+      <input type="text" id="section-login--username" value="DevTest" />
+    </div>
+    <div>
+      <label for="section-login--password">Password</label>
+      <input type="password" id="section-login--password" value="password" />
+    </div>
+    <div>
+      <label for="section-login--email">Email</label>
+      <input type="text" id="section-login--email" value="Dev@gmail.com" />
+    </div>
+    <button class="btn" type="submit">Login</button>
+    <a class="section-login--signup-link" href="/signup">Signup Instead</a>
+  </form>
+</section>
 
 <script src="/javascript/login.js"></script>

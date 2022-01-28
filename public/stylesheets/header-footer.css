@@ -1,0 +1,19 @@
+.main_layout-header,
+.main_layout-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: steelblue;
+  padding: 4rem;
+}
+
+.main_layout--list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.main_layout--list-item {
+  /* Using margin instead of gap since slightly older versions of safari don't support flexbox-gap */
+  margin-right: 1rem;
+}

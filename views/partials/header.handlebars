@@ -1,0 +1,15 @@
+<header class="main_layout-header">
+  <!-- Title -->
+  <h1 class="main_layout-header--title">Tech Journal</h1>
+  <!-- Navbar -->
+  <ul class="main_layout--list">
+    {{#unless state.loggedIn}}
+      <a href="/login" class="main_layout--list-item">Login</a>
+      <a href="/signup" class="main_layout--list-item">Signup</a>
+    {{else}}
+      <a href="/" class="main_layout--list-item">Home</a>
+      <a href="/dashboard" class="main_layout--list-item">Dashboard</a>
+      <button id="logout" class="main_layout--list-item">Logout</button>
+    {{/unless}}
+  </ul>
+</header>
