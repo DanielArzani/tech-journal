@@ -7,10 +7,11 @@ const routes = require("./controllers");
 const { create } = require("express-handlebars");
 const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
+const helpers = require("./utils/helpers");
 
 // Variables
 const app = express();
-const hbs = create();
+const hbs = create({ helpers });
 const PORT = process.env.PORT || 3000;
 const sess = {
   secret: "invisible secret key",

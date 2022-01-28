@@ -4,7 +4,7 @@
       <span class="post-top--title">{{post.title}}</span>
       <div>
         <span class="post-top--created_by">Posted by {{post.user.username}}</span>
-        <span class="post-top--created_at"> on {{post.created_at}}</span>
+        <span class="post-top--created_at"> on {{format_date post.created_at}}</span>
       </div>
     </div>
     <div class="post-bottom">

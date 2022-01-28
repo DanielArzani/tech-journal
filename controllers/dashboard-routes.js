@@ -1,8 +1,9 @@
 const router = require("express").Router();
 const { User, Post, Comment } = require("../models");
+const withAuth = require("../utils/auth");
 
 // Get dashboard
-router.get("/", async (req, res) => {
+router.get("/", withAuth, async (req, res) => {
   // Get all posts
   const response = await Post.findAll({
     where: { user_id: req.session.user_id },
@@ -37,7 +38,7 @@ router.get("/", async (req, res) => {
 });
 
 // Edit posts
-router.get("/edit/:id", async (req, res) => {
+router.get("/edit/:id", withAuth, async (req, res) => {
   const response = await Post.findOne({
     where: { id: req.params.id },
     attributes: ["id", "title", "content_body", "user_id", "created_at"],
