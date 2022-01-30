@@ -13,6 +13,7 @@ const helpers = require("./utils/helpers");
 const app = express();
 const hbs = create({ helpers });
 const PORT = process.env.PORT || 3000;
+// If you wish to use this app then remember to store you session secret key in an .env file
 const sess = {
   secret: "invisible secret key",
   cookie: {},
